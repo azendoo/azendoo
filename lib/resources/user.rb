@@ -1,8 +1,5 @@
 module Azendoo
-  class User < ActiveResource::Base
-    self.site = Azendoo::Conf.url
-    self.headers["X-ACCESS-TOKEN"] = Azendoo::Conf.access_token
-
+  class User < AzResource
     def self.me
       find(:me)
     end

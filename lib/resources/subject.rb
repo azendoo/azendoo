@@ -1,7 +1,5 @@
 module Azendoo
-  class Subject < ActiveResource::Base
-    self.site = Azendoo::Conf.url
-    self.headers["X-ACCESS-TOKEN"] = Azendoo::Conf.access_token
+  class Subject < AzResource
     has_many :tasks, class_name: 'Azendoo::Task'
     has_many :conversations, class_name: 'Azendoo::Conversation'
 

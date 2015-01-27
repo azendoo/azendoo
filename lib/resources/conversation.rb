@@ -1,11 +1,6 @@
 module Azendoo
-  class Conversation < ActiveResource::Base
-    self.site = Azendoo::Conf.url
-    self.headers["X-ACCESS-TOKEN"] = Azendoo::Conf.access_token
-
-    class Message < ActiveResource::Base
-      self.site = Azendoo::Conf.url
-      self.headers["X-ACCESS-TOKEN"] = Azendoo::Conf.access_token
+  class Conversation < AzResource
+    class Message < AzResource
       has_one :author, class_name: 'Azendoo::User'
     end
 

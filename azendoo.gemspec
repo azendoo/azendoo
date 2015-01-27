@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Use Azendoo's resource in your applications ;-)"
   s.authors     = ["Mathieu Laporte"]
   s.email       = 'mathieu.laporte@gmail.com'
-  s.files       = ["lib/azendoo.rb"]
+  s.files       = `git ls-files lib/`.split("\n")
   s.homepage    = 'https://api.azendoo.com/doc/'
   s.license     = 'MIT'
 end

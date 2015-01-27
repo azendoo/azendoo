@@ -4,7 +4,9 @@ module Azendoo
 
     def self.configure
       yield self
-      # Class need config
+
+      require File.join(File.dirname(__FILE__), 'resources/token')
+      require File.join(File.dirname(__FILE__), 'resources/az_resource')
       require File.join(File.dirname(__FILE__), 'resources/user')
       require File.join(File.dirname(__FILE__), 'resources/conversation')
       require File.join(File.dirname(__FILE__), 'resources/task')
@@ -13,8 +15,11 @@ module Azendoo
     end
 
     def self.url
-      # "https://staging.azendoo.com"
-      "http://localhost:3000"
+      @url || "https://api.azendoo.com"
+    end
+
+    def self.url=(url)
+      @url = url
     end
 
     def self.email
@@ -45,27 +50,5 @@ module Azendoo
     def self.access_token=(token)
       @token = token
     end
-
-    class Token < ActiveResource::Base
-      self.site = Azendoo::Conf.url
-      self.include_root_in_json = false
-
-      def to_json(options = {})
-          {
-            email: self.email,
-            password: self.password
-          }.to_json(options)
-      end
-      def load_attributes_from_response(r)
-        load(JSON.load(r.body))
-      end
-    end
   end
-end
-
-Azendoo::Conf.configure do |c|
-  c.email = 'tbishop@yopmail.com'
-  c.password = 'please'
-  # c.email = 'mlaporte@azendoo.com'
-  # c.password = 'azendoo9654'
 end
