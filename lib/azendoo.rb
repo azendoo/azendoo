@@ -9,6 +9,7 @@ module Azendoo
       require File.join(File.dirname(__FILE__), 'resources/az_resource')
       require File.join(File.dirname(__FILE__), 'resources/user')
       require File.join(File.dirname(__FILE__), 'resources/conversation')
+      require File.join(File.dirname(__FILE__), 'resources/media')
       require File.join(File.dirname(__FILE__), 'resources/task')
       require File.join(File.dirname(__FILE__), 'resources/subject')
       require File.join(File.dirname(__FILE__), 'resources/workspace')
